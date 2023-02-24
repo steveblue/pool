@@ -2,6 +2,16 @@
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.0.
 
+## IMPORTANT
+
+To run the app, you'll need to generate an auth token for making requests to finnhub.io. Setting up an account is free and easy at https://finnhub.io. Click on the button "Get free API key", obtain the key, then create a new file named `token.ts` in the root directory. The contents of this file should look as follows, replacing `{{REPLACE_TOKEN_HERE}}` with the actual token:
+
+```
+export const tokens = {
+  FINNHUB: '{{REPLACE_TOKEN_HERE}}',
+};
+```
+
 ## Development server
 
 Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The application will automatically reload if you change any of the source files.
