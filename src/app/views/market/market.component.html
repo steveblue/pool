@@ -1,0 +1,7 @@
+<div class="stock-container">
+    <h1>Stock Tracker</h1>
+</div>
+<div class="stock-container">
+    <app-card (onNewSymbol)="onNew($event)" ></app-card>
+    <app-card *ngFor="let stock of stocks" [stockValue]="stock" (onDeleteSymbol)="onDelete($event)"></app-card>
+</div>

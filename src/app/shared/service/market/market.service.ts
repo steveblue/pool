@@ -24,4 +24,7 @@ export class MarketService {
   subscribe(symbol: string) {
     this.sendMessage({ type: 'subscribe', symbol });
   }
+  unsubscribe(symbol: string) {
+    this.sendMessage({ type: 'unsubscribe', symbol });
+  }
 }

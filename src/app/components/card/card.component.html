@@ -1,0 +1,14 @@
+<div *ngIf="!stockValue">
+    <h2>Add Stock</h2>
+    <app-input (onInput)="onChange($event)"></app-input>
+    <app-button class="primary" [content]="'Add'" (onPress)="onAdd($event)"></app-button>
+    <div *ngIf="error" class="error">{{error}}</div>
+</div>
+
+<div *ngIf="stockValue">
+    <h4>{{stockValue.symbol}}</h4>
+    <p>{{stockValue.lastPrice | currency}}</p>
+    <app-button class="primary"[content]="'Delete'" (onPress)="onDelete(stockValue.symbol)"></app-button>
+</div>
+
+

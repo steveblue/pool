@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { MarketService } from './shared/service/market/market.service';
 import { MarketStore } from './shared/state/market/market.store';
-import { MarketModule } from './views/home/market.module';
+import { MarketModule } from './views/market/market.module';
 
 @NgModule({
   declarations: [AppComponent],

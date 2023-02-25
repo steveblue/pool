@@ -1,0 +1,85 @@
+:host(.primary button) {
+  background: var(--color-blue-500);
+  border: 2px solid var(--color-blue-500);
+  box-sizing: border-box;
+  border-radius: 12px;
+  min-height: 44px;
+  min-width: 180px;
+  color: var(--color-white);
+  font-size: var(--font-body-md);
+  font-weight: var(--font-weight-button);
+  cursor: pointer;
+  padding: 0px;
+}
+:host(.secondary button) {
+  background: var(--color-white);
+  border: 2px solid var(--color-blue-500);
+  box-sizing: border-box;
+  border-radius: 12px;
+  min-height: 44px;
+  min-width: 180px;
+  color: var(--color-blue-500);
+  font-size: var(--font-body-md);
+  font-weight: var(--font-weight-button);
+  cursor: pointer;
+  padding: 0px;
+}
+:host(.icon button) {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--color-white);
+  border: 2px solid var(--color-blue-500);
+  box-sizing: border-box;
+  border-radius: 12px;
+  height: 44px;
+  width: 44px;
+  color: var(--color-blue-500);
+  font-size: var(--font-body-icon);
+  font-weight: var(--font-weight-button);
+  cursor: pointer;
+  padding: 0px;
+  padding: var(--padding-xs);
+}
+:host(.primary:focus button),
+:host(.secondary:focus button),
+:host(.icon:focus button) {
+  background: var(--color-white);
+  color: var(--color-black);
+  border: 2px solid var(--color-black);
+  outline: none;
+}
+:host(.primary:active button),
+:host(.secondary:active button),
+:host(.icon:active button) {
+  background: var(--color-white);
+  color: var(--color-neutral-500);
+  border: 2px solid var(--color-neutral-500);
+  outline: none;
+}
+:host(.primary[disabled] button),
+:host(.secondary[disabled] button),
+:host(.icon[disabled] button) {
+  opacity: var(---color-disable);
+  background: var(--color-disable);
+  border: var(--border-disable);
+  color: var(--color-neutral-500);
+  cursor: default;
+}
+:host(.primary[disabled]:focus button),
+:host(.secondary[disabled]:focus button),
+:host(.icon[disabled]:focus button),
+:host(.primary[disabled]:active button),
+:host(.secondary[disabled]:active button),
+:host(.icon[disabled]:active button) {
+  border: var(--border-disable);
+  outline: none;
+  box-shadow: none;
+}
+.icon svg {
+  width: 100%;
+  height: 100%;
+}
+.icon.icon-close svg {
+  transform: rotateZ(45deg);
+}

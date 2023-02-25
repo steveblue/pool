@@ -14,15 +14,16 @@ import {
 export enum MarketActions {
   REPLACE = '[Market] Replace',
   FETCH = '[Market] Fetch',
+  DELETE = '[Market] Delete',
 }
 
 export interface MarketAction {
   type: string;
-  payload?: FinnMessage;
+  payload?: FinnMessage | string;
 }
 
 export class MarketState {
-  market: Record<string, FinnMessage> = {};
+  market: Record<string, StockValue> = {};
 }
 
 function getLatestFinndata(input: Array<FinnData>): FinnData {
@@ -49,15 +50,27 @@ function transformFinnDataToStockValue(input: FinnData): StockValue {
 export class MarketStore extends Store implements OnDestroy {
   private readonly _destroy = new Subject<void>();
   public override state$: Observable<MarketState>;
+
   constructor(public service: MarketService) {
     super(new MarketState());
   }
 
   override reducer(state: MarketState, action?: MarketAction) {
     switch (action?.type) {
+      case MarketActions.DELETE:
+        const key = action.payload as string;
+        if (state.market[key]) {
+          delete state.market[key];
+        }
+        return {
+          ...state,
+        };
       case MarketActions.REPLACE:
+        if (!action.payload || !(action.payload as FinnMessage).data) {
+          return state;
+        }
         const sortedFinnDataArray = sortFinnDataByUnixTimestamp(
-          action.payload?.data as FinnData[]
+          (action.payload as FinnMessage)?.data as FinnData[]
         );
         const lastTrade = getLatestFinndata(sortedFinnDataArray);
         const stockValue = transformFinnDataToStockValue(lastTrade);
